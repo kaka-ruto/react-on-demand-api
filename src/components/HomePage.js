@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Input from './Input';
 
 const HomePage = () => {
   return (
@@ -11,6 +12,7 @@ const HomePage = () => {
         <li>Review the <Link to="/fuel-savings">demo app</Link></li>
         <li>Remove the demo and start coding: npm run remove-demo</li>
       </ol>
+      <Input />
     </div>
   );
 };

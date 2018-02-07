@@ -12,10 +12,35 @@ import NotFoundPage from './NotFoundPage';
 // component at the top-level.
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mounted: false
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      mounted: true
+    });
+  }
+
+  handleSubmit(event) {
+    this.setState({
+      mounted: false
+    });
+    event.preventDefault();
+  }
+
   render() {
     const activeStyle = { color: 'blue' };
+
+    // if(this.state.mounted) {
+    //   child = (<Modal onSubmit={this.handleSubmit} />)
+    // }
+
     return (
-      <div>
+      <div className="App">
         <div>
           <NavLink exact to="/" activeStyle={activeStyle}>Home</NavLink>
           {' | '}
@@ -29,6 +54,12 @@ class App extends React.Component {
           <Route path="/about" component={AboutPage} />
           <Route component={NotFoundPage} />
         </Switch>
+        {/* <ReactCSStransitionGroup>
+          transitionName="example"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}>
+          {child}
+        </ReactCSStransitionGroup> */}
       </div>
     );
   }
